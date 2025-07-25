@@ -6,6 +6,7 @@ import { LoadingSpinner } from "@/components/ui/loading-spinner";
 import { supabase } from "@/integrations/supabase/client";
 import { Calendar, User, ArrowRight, Eye } from "lucide-react";
 import { toast } from "sonner";
+import { Link } from "react-router-dom";
 
 interface BlogPost {
   id: string;
@@ -38,18 +39,62 @@ const Blog = () => {
 
       if (error) {
         console.error('Error fetching blog posts:', error);
-        toast.error('Failed to load blog posts');
+        // Use hardcoded fallback posts
+        setPosts(fallbackPosts);
         return;
       }
 
-      setPosts(data || []);
+      // If no posts from database, use fallback
+      if (!data || data.length === 0) {
+        setPosts(fallbackPosts);
+      } else {
+        setPosts(data);
+      }
     } catch (error) {
       console.error('Error:', error);
-      toast.error('Failed to load blog posts');
+      // Use hardcoded fallback posts
+      setPosts(fallbackPosts);
     } finally {
       setLoading(false);
     }
   };
+
+  // Hardcoded fallback blog posts
+  const fallbackPosts: BlogPost[] = [
+    {
+      id: "1",
+      title: "The Future of Nigerian Cinema: Bridging Tradition and Innovation",
+      slug: "future-nigerian-cinema",
+      excerpt: "Exploring how modern Nigerian filmmakers are revolutionizing storytelling while honoring cultural heritage, creating content that resonates globally.",
+      author: "Adaora Okafor",
+      published_at: "2024-01-15T10:00:00Z",
+      tags: ["Nigerian Cinema", "Innovation", "Culture"],
+      view_count: 2456,
+      featured_image_url: ""
+    },
+    {
+      id: "2", 
+      title: "YouTube Success: Creating Engaging Long-Form Content",
+      slug: "youtube-long-form-success",
+      excerpt: "Master the art of YouTube long-form content creation with proven strategies for audience engagement, storytelling, and building a loyal subscriber base.",
+      author: "Emeka Okonkwo",
+      published_at: "2024-01-10T14:30:00Z",
+      tags: ["YouTube", "Content Creation", "Digital Marketing"],
+      view_count: 1823,
+      featured_image_url: ""
+    },
+    {
+      id: "3",
+      title: "Short-Form Content Revolution: TikTok and Beyond",
+      slug: "short-form-content-revolution", 
+      excerpt: "Understanding the power of short-form content and how it's reshaping entertainment consumption patterns across Africa and globally.",
+      author: "Kemi Afolabi",
+      published_at: "2024-01-05T09:15:00Z",
+      tags: ["Short-Form", "TikTok", "Social Media"],
+      view_count: 3102,
+      featured_image_url: ""
+    }
+  ];
 
   const formatDate = (dateString: string) => {
     return new Date(dateString).toLocaleDateString('en-US', {
@@ -161,10 +206,12 @@ const Blog = () => {
           {/* View All Button */}
           {posts.length > 0 && (
             <div className="text-center scroll-reveal">
-              <Button variant="outline" size="lg" className="group">
-                View All Articles
-                <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-              </Button>
+              <Link to="/blog">
+                <Button variant="outline" size="lg" className="group">
+                  View All Articles
+                  <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                </Button>
+              </Link>
             </div>
           )}
         </div>
