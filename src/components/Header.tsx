@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
+import { Link, useLocation } from "react-router-dom";
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -16,11 +18,9 @@ const Header = () => {
   }, []);
 
   const navItems = [
-    { name: 'Home', href: '#home' },
-    { name: 'About', href: '#about' },
-    { name: 'Services', href: '#services' },
-    { name: 'Blog', href: '#blog' },
-    { name: 'Contact', href: '#contact' }
+    { name: 'About', href: '/about' },
+    { name: 'Services', href: '/services' },
+    { name: 'Blog', href: '/blog' }
   ];
 
   return (
@@ -34,32 +34,36 @@ const Header = () => {
       <div className="container mx-auto px-4 py-4">
         <nav className="flex items-center justify-between">
           {/* Logo */}
-          <div className="flex items-center space-x-3">
+          <Link to="/" className="flex items-center space-x-3">
             <img 
               src="/lovable-uploads/cf3edfd4-e0c9-4921-8081-0e42ea195b0b.png" 
               alt="MrDGN Entertainment" 
-              className="h-8 md:h-10 w-auto"
+              className="h-8 md:h-10 w-auto transition-transform duration-200 hover:scale-110"
             />
-          </div>
+          </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
             {navItems.map((item) => (
-              <a
+              <Link
                 key={item.name}
-                href={item.href}
-                className="text-foreground hover:text-primary transition-colors duration-200 font-medium"
+                to={item.href}
+                className={`text-foreground hover:text-primary transition-colors duration-200 font-medium ${
+                  location.pathname === item.href ? 'text-primary' : ''
+                }`}
               >
                 {item.name}
-              </a>
+              </Link>
             ))}
           </div>
 
           {/* Contact Button */}
           <div className="hidden md:block">
-            <Button variant="default" className="hero-glow">
-              Get In Touch
-            </Button>
+            <Link to="/contact">
+              <Button variant="default" className="hero-glow">
+                Contact Us
+              </Button>
+            </Link>
           </div>
 
           {/* Mobile Menu Button */}
@@ -80,18 +84,22 @@ const Header = () => {
           <div className="md:hidden mt-4 py-4 border-t border-border">
             <div className="flex flex-col space-y-4">
               {navItems.map((item) => (
-                <a
+                <Link
                   key={item.name}
-                  href={item.href}
-                  className="text-foreground hover:text-primary transition-colors duration-200 font-medium"
+                  to={item.href}
+                  className={`text-foreground hover:text-primary transition-colors duration-200 font-medium ${
+                    location.pathname === item.href ? 'text-primary' : ''
+                  }`}
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   {item.name}
-                </a>
+                </Link>
               ))}
-              <Button variant="default" className="w-full mt-4">
-                Get In Touch
-              </Button>
+              <Link to="/contact">
+                <Button variant="default" className="w-full mt-4">
+                  Contact Us
+                </Button>
+              </Link>
             </div>
           </div>
         )}

@@ -2,9 +2,9 @@ import { useScrollReveal } from "@/hooks/useScrollReveal";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
+import Services from "@/components/Services";
 import MovingLogos from "@/components/MovingLogos";
 import Blog from "@/components/Blog";
-import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 
 const Index = () => {
@@ -15,9 +15,9 @@ const Index = () => {
       <Header />
       <Hero />
       <About />
+      <Services />
       <MovingLogos />
       <Blog />
-      <Contact />
       <Footer />
     </div>
   );
