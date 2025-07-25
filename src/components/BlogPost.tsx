@@ -52,10 +52,7 @@ const BlogPost = () => {
 
   const incrementViewCount = async (slug: string) => {
     try {
-      const { error } = await supabase.rpc('increment_view_count', { post_slug: slug });
-      if (error) {
-        console.error('Error incrementing view count:', error);
-      }
+      await supabase.rpc('increment_view_count', { post_slug: slug });
     } catch (error) {
       console.error('Error incrementing view count:', error);
     }
@@ -109,11 +106,15 @@ const BlogPost = () => {
         content: `
           <h2>The Renaissance of Nigerian Cinema</h2>
           
-          <p>Nigerian cinema, affectionately known as Nollywood, stands at a pivotal crossroads where tradition meets innovation. As the industry continues to evolve, filmmakers are discovering new ways to honor their cultural heritage while embracing cutting-edge storytelling techniques that captivate global audiences.</p>
+          <p><em>Nigerian cinema, affectionately known as Nollywood, stands at a pivotal crossroads where tradition meets innovation.</em> As the industry continues to evolve, filmmakers are discovering new ways to honor their cultural heritage while embracing cutting-edge storytelling techniques that captivate global audiences.</p>
+          
+          <p>The transformation has been nothing short of remarkable. <strong>From humble beginnings in the 1990s to becoming the world's second-largest film industry by volume</strong>, Nollywood has proven that authentic storytelling resonates universally.</p>
           
           <h3>Cultural Heritage in Modern Storytelling</h3>
           
-          <p>At the heart of Nigerian cinema's evolution lies a deep respect for cultural authenticity. Contemporary filmmakers are weaving traditional folklore, customs, and languages into their narratives, creating a rich tapestry that celebrates Nigeria's diverse heritage. This approach not only preserves cultural identity but also introduces international audiences to the beauty and complexity of Nigerian society.</p>
+          <p>At the heart of Nigerian cinema's evolution lies a deep respect for cultural authenticity. Contemporary filmmakers are weaving traditional folklore, customs, and languages into their narratives, creating a rich tapestry that celebrates Nigeria's diverse heritage.</p>
+          
+          <p><em>This approach not only preserves cultural identity but also introduces international audiences to the beauty and complexity of Nigerian society.</em> <strong>The result is cinema that feels both deeply rooted and refreshingly contemporary.</strong></p>
           
           <blockquote>
             "Cinema is our bridge between the old and the new. It's how we tell our ancestors' stories to the world while creating new ones for future generations." - Genevieve Nnaji, Acclaimed Nollywood Actress and Director
@@ -121,17 +122,23 @@ const BlogPost = () => {
           
           <h3>Technological Innovation and Production Quality</h3>
           
-          <p>The adoption of advanced filming techniques, high-quality equipment, and professional post-production processes has elevated Nigerian films to international standards. From improved cinematography to sophisticated sound design, these technological advances are helping Nigerian stories compete on the global stage.</p>
+          <p>The adoption of advanced filming techniques, high-quality equipment, and professional post-production processes has elevated Nigerian films to international standards. <strong>From improved cinematography to sophisticated sound design</strong>, these technological advances are helping Nigerian stories compete on the global stage.</p>
+          
+          <p><em>Directors are now experimenting with drone cinematography, 4K resolution, and advanced color grading techniques</em> that rival Hollywood productions. This technical excellence serves the story, never overwhelming it.</p>
           
           <h3>Global Distribution and Streaming Platforms</h3>
           
-          <p>The rise of streaming platforms has opened unprecedented opportunities for Nigerian filmmakers. Movies that once had limited theatrical releases can now reach millions of viewers worldwide, creating new revenue streams and building international fan bases.</p>
+          <p>The rise of streaming platforms has opened unprecedented opportunities for Nigerian filmmakers. <strong>Movies that once had limited theatrical releases can now reach millions of viewers worldwide</strong>, creating new revenue streams and building international fan bases.</p>
+          
+          <p><em>Netflix, Amazon Prime, and other platforms have become crucial partners</em> in bringing Nigerian stories to global audiences, validating the universal appeal of well-crafted narratives.</p>
           
           <h3>The Next Generation of Filmmakers</h3>
           
-          <p>Young Nigerian filmmakers are bringing fresh perspectives, diverse narratives, and innovative approaches to the industry. They're not afraid to tackle complex social issues while maintaining the entertainment value that has made Nollywood beloved worldwide.</p>
+          <p>Young Nigerian filmmakers are bringing fresh perspectives, diverse narratives, and innovative approaches to the industry. <strong>They're not afraid to tackle complex social issues</strong> while maintaining the entertainment value that has made Nollywood beloved worldwide.</p>
           
-          <p>As we look toward the future, Nigerian cinema continues to prove that great storytelling transcends borders. By honoring their roots while embracing innovation, Nigerian filmmakers are creating a blueprint for authentic, culturally rich cinema that resonates with audiences everywhere.</p>
+          <p><em>These emerging voices represent the future of Nigerian cinema</em> - bold, uncompromising, and deeply connected to both their roots and global cinema trends.</p>
+          
+          <p>As we look toward the future, Nigerian cinema continues to prove that great storytelling transcends borders. <strong>By honoring their roots while embracing innovation, Nigerian filmmakers are creating a blueprint for authentic, culturally rich cinema</strong> that resonates with audiences everywhere.</p>
         `,
         author: "Adaora Okafor",
         published_at: "2024-01-15T10:00:00Z",
@@ -331,44 +338,52 @@ const BlogPost = () => {
         style={{ width: `${readingProgress}%` }}
       />
 
-      {/* Hero Section */}
-      <div className="relative h-[60vh] min-h-96 overflow-hidden">
-        <img 
-          src={post.featured_image_url} 
-          alt={post.title}
-          className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-black/20" />
-        
-        <div className="absolute inset-0 flex items-center justify-center">
-          <div className="container mx-auto px-4 text-center text-white">
-            <div className="flex flex-wrap gap-3 justify-center mb-6">
-              {post.tags.map((tag) => (
-                <Badge key={tag} variant="secondary" className="bg-white/15 hover:bg-white/25 text-white border-white/20 px-4 py-2 text-sm font-medium backdrop-blur-sm transition-all duration-300">
-                  {tag}
-                </Badge>
-              ))}
+      {/* Article Header */}
+      <div className="container mx-auto px-4 pt-24 pb-8">
+        <div className="max-w-4xl mx-auto text-center">
+          {/* Article Title */}
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-8 text-foreground leading-tight">
+            {post.title}
+          </h1>
+          
+          {/* Author and Meta Info */}
+          <div className="flex items-center justify-center space-x-8 text-muted-foreground text-sm md:text-base mb-8">
+            <div className="flex items-center space-x-2">
+              <User className="h-5 w-5" />
+              <span className="font-medium">{post.author}</span>
             </div>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 max-w-5xl mx-auto leading-tight text-white drop-shadow-lg">
-              {post.title}
-            </h1>
-            <p className="text-lg md:text-xl text-white/90 max-w-3xl mx-auto mb-8 leading-relaxed">
-              {post.excerpt}
-            </p>
-            <div className="flex items-center justify-center space-x-8 text-white/90 text-sm md:text-base">
-              <div className="flex items-center space-x-2">
-                <User className="h-5 w-5" />
-                <span className="font-medium">{post.author}</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <Calendar className="h-5 w-5" />
-                <span>{formatDate(post.published_at)}</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <Eye className="h-5 w-5" />
-                <span>{post.view_count} views</span>
-              </div>
+            <div className="flex items-center space-x-2">
+              <Calendar className="h-5 w-5" />
+              <span>{formatDate(post.published_at)}</span>
             </div>
+            <div className="flex items-center space-x-2">
+              <Eye className="h-5 w-5" />
+              <span>{post.view_count} views</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Featured Image */}
+      <div className="container mx-auto px-4 mb-8">
+        <div className="max-w-4xl mx-auto">
+          <img 
+            src={post.featured_image_url} 
+            alt={post.title}
+            className="w-full h-[400px] md:h-[500px] object-cover rounded-2xl shadow-2xl transition-transform duration-700 hover:scale-[1.02]"
+          />
+        </div>
+      </div>
+
+      {/* Tags */}
+      <div className="container mx-auto px-4 mb-12">
+        <div className="max-w-4xl mx-auto">
+          <div className="flex flex-wrap gap-3 justify-center">
+            {post.tags.map((tag) => (
+              <Badge key={tag} variant="secondary" className="px-4 py-2 text-sm font-medium">
+                {tag}
+              </Badge>
+            ))}
           </div>
         </div>
       </div>
@@ -400,7 +415,8 @@ const BlogPost = () => {
                   prose-h3:text-2xl prose-h3:text-primary
                   prose-h4:text-xl prose-h4:text-primary/80
                   prose-p:text-foreground prose-p:leading-relaxed prose-p:mb-6 prose-p:text-lg
-                  prose-strong:text-foreground prose-strong:font-semibold
+                  prose-strong:text-foreground prose-strong:font-bold prose-strong:bg-primary/10 prose-strong:px-1 prose-strong:rounded
+                  prose-em:text-foreground prose-em:italic prose-em:font-serif prose-em:text-lg
                   prose-blockquote:border-l-4 prose-blockquote:border-primary prose-blockquote:bg-muted/30 
                   prose-blockquote:p-6 prose-blockquote:rounded-r-lg prose-blockquote:text-foreground 
                   prose-blockquote:italic prose-blockquote:text-lg prose-blockquote:my-8
