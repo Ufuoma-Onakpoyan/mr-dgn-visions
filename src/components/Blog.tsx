@@ -18,8 +18,8 @@ interface BlogPost {
   excerpt: string;
   author: string;
   published_at: string;
-  tags: string[];
-  view_count: number;
+  tags: string[] | null;
+  view_count: number | null;
   featured_image_url?: string;
 }
 
@@ -166,7 +166,7 @@ const Blog = () => {
 
                   <CardHeader className="pb-4">
                     <div className="flex flex-wrap gap-2 mb-3">
-                      {post.tags.slice(0, 2).map((tag) => (
+                      {(post.tags || []).slice(0, 2).map((tag) => (
                         <Badge key={tag} variant="secondary" className="text-xs">
                           {tag}
                         </Badge>
@@ -195,7 +195,7 @@ const Blog = () => {
                       </div>
                       <div className="flex items-center space-x-1">
                         <Eye className="h-3 w-3" />
-                        <span>{post.view_count}</span>
+                        <span>{post.view_count || 0}</span>
                       </div>
                     </div>
 

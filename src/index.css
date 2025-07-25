@@ -123,11 +123,21 @@ All colors MUST be HSL.
     opacity: 0;
     transform: translateY(40px);
     transition: var(--transition-smooth);
+    /* Fallback to show content after 1 second if scroll reveal doesn't trigger */
+    animation: scroll-reveal-fallback 1s ease-out 1s forwards;
   }
 
   .scroll-reveal.revealed {
     opacity: 1;
     transform: translateY(0);
+    animation: none;
+  }
+
+  @keyframes scroll-reveal-fallback {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 
   /* Staggered reveal animation */
