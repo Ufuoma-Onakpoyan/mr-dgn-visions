@@ -414,14 +414,14 @@ const BlogPost = () => {
                   prose-h2:text-3xl prose-h2:border-b prose-h2:border-border/30 prose-h2:pb-3
                   prose-h3:text-2xl prose-h3:text-primary
                   prose-h4:text-xl prose-h4:text-primary/80
-                  prose-p:text-foreground prose-p:leading-relaxed prose-p:mb-6 prose-p:text-lg
-                  prose-strong:text-foreground prose-strong:font-bold prose-strong:bg-primary/10 prose-strong:px-1 prose-strong:rounded
-                  prose-em:text-foreground prose-em:italic prose-em:font-serif prose-em:text-lg
+                  prose-p:text-foreground prose-p:leading-relaxed prose-p:mb-8 prose-p:text-lg prose-p:italic prose-p:font-medium prose-p:font-serif
+                  prose-strong:text-foreground prose-strong:font-bold prose-strong:bg-primary/10 prose-strong:px-1 prose-strong:rounded prose-strong:not-italic
+                  prose-em:text-foreground prose-em:italic prose-em:font-serif prose-em:text-lg prose-em:font-medium
                   prose-blockquote:border-l-4 prose-blockquote:border-primary prose-blockquote:bg-muted/30 
                   prose-blockquote:p-6 prose-blockquote:rounded-r-lg prose-blockquote:text-foreground 
-                  prose-blockquote:italic prose-blockquote:text-lg prose-blockquote:my-8
-                  prose-li:text-foreground prose-li:leading-relaxed prose-li:mb-2 prose-li:text-lg
-                  prose-ul:my-6 prose-ol:my-6
+                  prose-blockquote:italic prose-blockquote:text-lg prose-blockquote:my-8 prose-blockquote:font-serif
+                  prose-li:text-foreground prose-li:leading-relaxed prose-li:mb-3 prose-li:text-lg prose-li:italic prose-li:font-medium prose-li:font-serif
+                  prose-ul:my-8 prose-ol:my-8
                   prose-a:text-primary prose-a:font-medium prose-a:no-underline hover:prose-a:underline
                   prose-code:bg-muted prose-code:px-2 prose-code:py-1 prose-code:rounded prose-code:text-sm
                   prose-pre:bg-muted prose-pre:border prose-pre:border-border
