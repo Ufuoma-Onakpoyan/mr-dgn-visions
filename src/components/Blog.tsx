@@ -7,6 +7,9 @@ import { supabase } from "@/integrations/supabase/client";
 import { Calendar, User, ArrowRight, Eye } from "lucide-react";
 import { toast } from "sonner";
 import { Link } from "react-router-dom";
+import blogFeatured1 from "@/assets/blog-featured-1.jpg";
+import blogFeatured2 from "@/assets/blog-featured-2.jpg";
+import blogFeatured3 from "@/assets/blog-featured-3.jpg";
 
 interface BlogPost {
   id: string;
@@ -39,28 +42,35 @@ const Blog = () => {
 
       if (error) {
         console.error('Error fetching blog posts:', error);
-        // Use hardcoded fallback posts
-        setPosts(fallbackPosts);
+        setPosts(getEnhancedFallbackPosts());
         return;
       }
 
       // If no posts from database, use fallback
       if (!data || data.length === 0) {
-        setPosts(fallbackPosts);
+        setPosts(getEnhancedFallbackPosts());
       } else {
-        setPosts(data);
+        // Map Supabase data and add featured images
+        const enhancedPosts = data.map((post, index) => ({
+          ...post,
+          featured_image_url: post.featured_image_url || getFeaturedImage(index)
+        }));
+        setPosts(enhancedPosts);
       }
     } catch (error) {
       console.error('Error:', error);
-      // Use hardcoded fallback posts
-      setPosts(fallbackPosts);
+      setPosts(getEnhancedFallbackPosts());
     } finally {
       setLoading(false);
     }
   };
 
-  // Hardcoded fallback blog posts
-  const fallbackPosts: BlogPost[] = [
+  const getFeaturedImage = (index: number) => {
+    const images = [blogFeatured1, blogFeatured2, blogFeatured3];
+    return images[index % images.length];
+  };
+
+  const getEnhancedFallbackPosts = (): BlogPost[] => [
     {
       id: "1",
       title: "The Future of Nigerian Cinema: Bridging Tradition and Innovation",
@@ -70,7 +80,7 @@ const Blog = () => {
       published_at: "2024-01-15T10:00:00Z",
       tags: ["Nigerian Cinema", "Innovation", "Culture"],
       view_count: 2456,
-      featured_image_url: ""
+      featured_image_url: blogFeatured2
     },
     {
       id: "2", 
@@ -81,7 +91,7 @@ const Blog = () => {
       published_at: "2024-01-10T14:30:00Z",
       tags: ["YouTube", "Content Creation", "Digital Marketing"],
       view_count: 1823,
-      featured_image_url: ""
+      featured_image_url: blogFeatured3
     },
     {
       id: "3",
@@ -92,9 +102,10 @@ const Blog = () => {
       published_at: "2024-01-05T09:15:00Z",
       tags: ["Short-Form", "TikTok", "Social Media"],
       view_count: 3102,
-      featured_image_url: ""
+      featured_image_url: blogFeatured1
     }
   ];
+
 
   const formatDate = (dateString: string) => {
     return new Date(dateString).toLocaleDateString('en-US', {
@@ -136,18 +147,21 @@ const Blog = () => {
           {posts.length > 0 ? (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
               {posts.map((post, index) => (
-                <Card key={post.id} className="card-hover scroll-reveal border-0 shadow-lg overflow-hidden">
-                  {/* Featured Image Placeholder */}
-                  <div className="h-48 bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center">
+                <Card key={post.id} className="group card-hover scroll-reveal border-0 bg-gradient-to-br from-card to-card/50 overflow-hidden backdrop-blur-sm" style={{boxShadow: 'var(--shadow-card)'}}>
+                  {/* Featured Image */}
+                  <div className="relative h-52 overflow-hidden">
                     {post.featured_image_url ? (
                       <img 
                         src={post.featured_image_url} 
                         alt={post.title}
-                        className="w-full h-full object-cover"
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                       />
                     ) : (
-                      <div className="text-primary/40 text-6xl">📖</div>
+                      <div className="w-full h-full bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center">
+                        <div className="text-primary/40 text-6xl">📖</div>
+                      </div>
                     )}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   </div>
 
                   <CardHeader className="pb-4">
