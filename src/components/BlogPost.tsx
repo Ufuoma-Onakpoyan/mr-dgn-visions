@@ -312,45 +312,48 @@ const BlogPost = () => {
   }
 
   return (
-    <article className="min-h-screen">
+    <article className="min-h-screen bg-gradient-to-br from-background via-background/95 to-background/90">
       {/* Reading Progress Bar */}
       <div 
-        className="fixed top-0 left-0 h-1 bg-primary z-50 transition-all duration-150"
+        className="fixed top-0 left-0 h-1 bg-gradient-to-r from-primary to-primary/80 z-50 transition-all duration-150 shadow-lg"
         style={{ width: `${readingProgress}%` }}
       />
 
       {/* Hero Section */}
-      <div className="relative h-96 overflow-hidden">
+      <div className="relative h-[60vh] min-h-96 overflow-hidden">
         <img 
           src={post.featured_image_url} 
           alt={post.title}
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-black/20" />
         
         <div className="absolute inset-0 flex items-center justify-center">
           <div className="container mx-auto px-4 text-center text-white">
-            <div className="flex flex-wrap gap-2 justify-center mb-4">
+            <div className="flex flex-wrap gap-3 justify-center mb-6">
               {post.tags.map((tag) => (
-                <Badge key={tag} variant="secondary" className="bg-white/20 text-white">
+                <Badge key={tag} variant="secondary" className="bg-white/15 hover:bg-white/25 text-white border-white/20 px-4 py-2 text-sm font-medium backdrop-blur-sm transition-all duration-300">
                   {tag}
                 </Badge>
               ))}
             </div>
-            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 max-w-4xl mx-auto leading-tight">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 max-w-5xl mx-auto leading-tight text-white drop-shadow-lg">
               {post.title}
             </h1>
-            <div className="flex items-center justify-center space-x-6 text-white/80">
+            <p className="text-lg md:text-xl text-white/90 max-w-3xl mx-auto mb-8 leading-relaxed">
+              {post.excerpt}
+            </p>
+            <div className="flex items-center justify-center space-x-8 text-white/90 text-sm md:text-base">
               <div className="flex items-center space-x-2">
-                <User className="h-4 w-4" />
-                <span>{post.author}</span>
+                <User className="h-5 w-5" />
+                <span className="font-medium">{post.author}</span>
               </div>
               <div className="flex items-center space-x-2">
-                <Calendar className="h-4 w-4" />
+                <Calendar className="h-5 w-5" />
                 <span>{formatDate(post.published_at)}</span>
               </div>
               <div className="flex items-center space-x-2">
-                <Eye className="h-4 w-4" />
+                <Eye className="h-5 w-5" />
                 <span>{post.view_count} views</span>
               </div>
             </div>
@@ -359,40 +362,61 @@ const BlogPost = () => {
       </div>
 
       {/* Article Content */}
-      <div className="container mx-auto px-4 py-12">
+      <div className="container mx-auto px-4 py-16">
         <div className="max-w-4xl mx-auto">
           {/* Navigation */}
-          <div className="flex items-center justify-between mb-8">
+          <div className="flex items-center justify-between mb-12 pb-6 border-b border-border/50">
             <Link to="/blog">
-              <Button variant="ghost" size="sm">
-                <ArrowLeft className="mr-2 h-4 w-4" />
+              <Button variant="outline" size="lg" className="group hover:scale-105 transition-all duration-300">
+                <ArrowLeft className="mr-2 h-4 w-4 group-hover:-translate-x-1 transition-transform" />
                 Back to Blog
               </Button>
             </Link>
-            <Button variant="ghost" size="sm" onClick={handleShare}>
-              <Share2 className="mr-2 h-4 w-4" />
-              Share
+            <Button variant="outline" size="lg" onClick={handleShare} className="group hover:scale-105 transition-all duration-300">
+              <Share2 className="mr-2 h-4 w-4 group-hover:rotate-12 transition-transform" />
+              Share Article
             </Button>
           </div>
 
           {/* Article Body */}
-          <Card className="border-0 bg-gradient-to-br from-card to-card/50">
-            <CardContent className="p-8">
+          <Card className="border-0 bg-card/50 backdrop-blur-sm shadow-2xl overflow-hidden">
+            <CardContent className="p-8 md:p-12">
               <div 
-                className="prose prose-lg max-w-none prose-headings:text-foreground prose-p:text-muted-foreground prose-strong:text-foreground prose-blockquote:border-primary prose-blockquote:text-foreground prose-li:text-muted-foreground prose-a:text-primary"
+                className="prose prose-xl max-w-none
+                  prose-headings:font-bold prose-headings:text-foreground prose-headings:mb-6 prose-headings:mt-8
+                  prose-h2:text-3xl prose-h2:border-b prose-h2:border-border/30 prose-h2:pb-3
+                  prose-h3:text-2xl prose-h3:text-primary
+                  prose-h4:text-xl prose-h4:text-primary/80
+                  prose-p:text-foreground prose-p:leading-relaxed prose-p:mb-6 prose-p:text-lg
+                  prose-strong:text-foreground prose-strong:font-semibold
+                  prose-blockquote:border-l-4 prose-blockquote:border-primary prose-blockquote:bg-muted/30 
+                  prose-blockquote:p-6 prose-blockquote:rounded-r-lg prose-blockquote:text-foreground 
+                  prose-blockquote:italic prose-blockquote:text-lg prose-blockquote:my-8
+                  prose-li:text-foreground prose-li:leading-relaxed prose-li:mb-2 prose-li:text-lg
+                  prose-ul:my-6 prose-ol:my-6
+                  prose-a:text-primary prose-a:font-medium prose-a:no-underline hover:prose-a:underline
+                  prose-code:bg-muted prose-code:px-2 prose-code:py-1 prose-code:rounded prose-code:text-sm
+                  prose-pre:bg-muted prose-pre:border prose-pre:border-border
+                  prose-img:rounded-lg prose-img:shadow-lg prose-img:my-8"
                 dangerouslySetInnerHTML={{ __html: post.content }}
               />
             </CardContent>
           </Card>
 
-          {/* Article Footer */}
-          <div className="mt-12 text-center">
-            <Link to="/blog">
-              <Button size="lg" className="group">
-                <ArrowLeft className="mr-2 h-4 w-4 group-hover:-translate-x-1 transition-transform" />
-                Read More Articles
-              </Button>
-            </Link>
+          {/* Related Articles Section */}
+          <div className="mt-16 p-8 bg-muted/30 rounded-xl border border-border/50">
+            <h3 className="text-2xl font-bold text-center mb-8">Continue Reading</h3>
+            <div className="text-center space-y-4">
+              <p className="text-muted-foreground text-lg">
+                Discover more insights and stories from our blog
+              </p>
+              <Link to="/blog">
+                <Button size="lg" className="group bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70 transition-all duration-300">
+                  <ArrowLeft className="mr-2 h-5 w-5 group-hover:-translate-x-1 transition-transform" />
+                  Explore All Articles
+                </Button>
+              </Link>
+            </div>
           </div>
         </div>
       </div>

@@ -38,7 +38,7 @@ const Blog = () => {
         .select('*')
         .eq('published', true)
         .order('published_at', { ascending: false })
-        .limit(6);
+        .limit(50); // Show more articles for the full blog page
 
       if (error) {
         console.error('Error fetching blog posts:', error);
