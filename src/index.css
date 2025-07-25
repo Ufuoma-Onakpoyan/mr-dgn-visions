@@ -121,10 +121,10 @@ All colors MUST be HSL.
   /* Scroll reveal animations */
   .scroll-reveal {
     opacity: 0;
-    transform: translateY(40px);
-    transition: var(--transition-smooth);
-    /* Fallback to show content after 1 second if scroll reveal doesn't trigger */
-    animation: scroll-reveal-fallback 1s ease-out 1s forwards;
+    transform: translateY(60px);
+    transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    /* Fallback to show content after 2 seconds if scroll reveal doesn't trigger */
+    animation: scroll-reveal-fallback 0.8s ease-out 2s forwards;
   }
 
   .scroll-reveal.revealed {
@@ -142,11 +142,11 @@ All colors MUST be HSL.
 
   /* Staggered reveal animation */
   .scroll-reveal:nth-child(1) { transition-delay: 0ms; }
-  .scroll-reveal:nth-child(2) { transition-delay: 100ms; }
-  .scroll-reveal:nth-child(3) { transition-delay: 200ms; }
-  .scroll-reveal:nth-child(4) { transition-delay: 300ms; }
-  .scroll-reveal:nth-child(5) { transition-delay: 400ms; }
-  .scroll-reveal:nth-child(6) { transition-delay: 500ms; }
+  .scroll-reveal:nth-child(2) { transition-delay: 150ms; }
+  .scroll-reveal:nth-child(3) { transition-delay: 300ms; }
+  .scroll-reveal:nth-child(4) { transition-delay: 450ms; }
+  .scroll-reveal:nth-child(5) { transition-delay: 600ms; }
+  .scroll-reveal:nth-child(6) { transition-delay: 750ms; }
 
   /* Moving logos animation */
   .moving-logos {
