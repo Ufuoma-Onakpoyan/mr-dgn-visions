@@ -199,10 +199,12 @@ const Blog = () => {
                       </div>
                     </div>
 
-                    <Button variant="ghost" size="sm" className="w-full group">
-                      Read Article
-                      <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-                    </Button>
+                    <Link to={`/blog/${post.slug}`}>
+                      <Button variant="ghost" size="sm" className="w-full group">
+                        Read Article
+                        <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                      </Button>
+                    </Link>
                   </CardContent>
                 </Card>
               ))}
