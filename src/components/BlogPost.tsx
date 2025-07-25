@@ -34,6 +34,7 @@ const BlogPost = () => {
   useEffect(() => {
     if (slug) {
       fetchBlogPost(slug);
+      incrementViewCount(slug);
     }
   }, [slug]);
 
@@ -48,6 +49,17 @@ const BlogPost = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const incrementViewCount = async (slug: string) => {
+    try {
+      const { error } = await supabase.rpc('increment_view_count', { post_slug: slug });
+      if (error) {
+        console.error('Error incrementing view count:', error);
+      }
+    } catch (error) {
+      console.error('Error incrementing view count:', error);
+    }
+  };
 
   const fetchBlogPost = async (slug: string) => {
     try {
