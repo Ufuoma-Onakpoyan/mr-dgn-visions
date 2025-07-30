@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { LoadingSpinner } from "@/components/ui/loading-spinner";
 import { supabase } from "@/integrations/supabase/client";
+import { processContentForParagraphs } from "@/lib/utils";
 import { Calendar, User, ArrowLeft, Eye, Share2 } from "lucide-react";
 import { toast } from "sonner";
 import blogFeatured1 from "@/assets/blog-featured-1.jpg";
@@ -428,7 +429,7 @@ const BlogPost = () => {
                   prose-code:bg-muted prose-code:px-3 prose-code:py-1 prose-code:rounded prose-code:text-sm prose-code:font-mono prose-code:border
                   prose-pre:bg-muted prose-pre:border prose-pre:border-border prose-pre:rounded-lg prose-pre:p-6 prose-pre:my-10 prose-pre:shadow-inner
                   prose-img:rounded-xl prose-img:shadow-2xl prose-img:my-12 prose-img:border prose-img:border-border/30"
-                dangerouslySetInnerHTML={{ __html: post.content }}
+                dangerouslySetInnerHTML={{ __html: processContentForParagraphs(post.content) }}
               />
             </CardContent>
           </Card>

@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { LoadingSpinner } from "@/components/ui/loading-spinner";
 import { supabase } from "@/integrations/supabase/client";
+import { processContentForParagraphs } from "@/lib/utils";
 import { Calendar, User, ArrowRight, Eye } from "lucide-react";
 import { toast } from "sonner";
 import { Link } from "react-router-dom";
@@ -178,9 +179,10 @@ const Blog = () => {
                   </CardHeader>
 
                   <CardContent className="pt-0">
-                    <p className="text-muted-foreground mb-4 line-clamp-3 text-sm leading-relaxed">
-                      {post.excerpt}
-                    </p>
+                    <div 
+                      className="text-muted-foreground mb-4 line-clamp-3 text-sm leading-relaxed prose prose-sm max-w-none"
+                      dangerouslySetInnerHTML={{ __html: processContentForParagraphs(post.excerpt || '') }}
+                    />
 
                     <div className="flex items-center justify-between text-xs text-muted-foreground mb-4">
                       <div className="flex items-center space-x-4">
