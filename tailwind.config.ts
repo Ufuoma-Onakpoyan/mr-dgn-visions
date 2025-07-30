@@ -69,6 +69,10 @@ export default {
 				md: 'calc(var(--radius) - 2px)',
 				sm: 'calc(var(--radius) - 4px)'
 			},
+			fontFamily: {
+				'blog': ['Crimson Text', 'serif'],
+				'blog-alt': ['Lora', 'serif'],
+			},
 			keyframes: {
 				'accordion-down': {
 					from: {

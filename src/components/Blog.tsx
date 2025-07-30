@@ -180,7 +180,7 @@ const Blog = () => {
 
                   <CardContent className="pt-0">
                     <div 
-                      className="text-muted-foreground mb-4 line-clamp-3 text-sm leading-relaxed prose prose-sm max-w-none"
+                      className="text-muted-foreground mb-4 line-clamp-3 text-sm leading-relaxed prose prose-sm max-w-none font-blog"
                       dangerouslySetInnerHTML={{ __html: processContentForParagraphs(post.excerpt || '') }}
                     />
 
