@@ -19,6 +19,7 @@ interface BlogPost {
   excerpt: string;
   author: string;
   published_at: string;
+  created_at: string;
   tags: string[] | null;
   view_count: number | null;
   featured_image_url?: string;
@@ -79,6 +80,7 @@ const Blog = () => {
       excerpt: "Exploring how modern Nigerian filmmakers are revolutionizing storytelling while honoring cultural heritage, creating content that resonates globally.",
       author: "Adaora Okafor",
       published_at: "2024-01-15T10:00:00Z",
+      created_at: "2024-01-15T10:00:00Z",
       tags: ["Nigerian Cinema", "Innovation", "Culture"],
       view_count: 2456,
       featured_image_url: blogFeatured2
@@ -90,6 +92,7 @@ const Blog = () => {
       excerpt: "Master the art of YouTube long-form content creation with proven strategies for audience engagement, storytelling, and building a loyal subscriber base.",
       author: "Emeka Okonkwo",
       published_at: "2024-01-10T14:30:00Z",
+      created_at: "2024-01-10T14:30:00Z",
       tags: ["YouTube", "Content Creation", "Digital Marketing"],
       view_count: 1823,
       featured_image_url: blogFeatured3
@@ -101,6 +104,7 @@ const Blog = () => {
       excerpt: "Understanding the power of short-form content and how it's reshaping entertainment consumption patterns across Africa and globally.",
       author: "Kemi Afolabi",
       published_at: "2024-01-05T09:15:00Z",
+      created_at: "2024-01-05T09:15:00Z",
       tags: ["Short-Form", "TikTok", "Social Media"],
       view_count: 3102,
       featured_image_url: blogFeatured1
@@ -192,7 +196,7 @@ const Blog = () => {
                         </div>
                         <div className="flex items-center space-x-1">
                           <Calendar className="h-3 w-3" />
-                          <span>{formatDate(post.published_at)}</span>
+                          <span>{formatDate(post.published_at || post.created_at)}</span>
                         </div>
                       </div>
                       <div className="flex items-center space-x-1">

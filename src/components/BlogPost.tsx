@@ -20,6 +20,7 @@ interface BlogPost {
   excerpt: string;
   author: string;
   published_at: string;
+  created_at: string;
   tags: string[];
   view_count: number;
   featured_image_url?: string;
@@ -143,6 +144,7 @@ const BlogPost = () => {
         `,
         author: "Adaora Okafor",
         published_at: "2024-01-15T10:00:00Z",
+        created_at: "2024-01-15T10:00:00Z",
         tags: ["Nigerian Cinema", "Innovation", "Culture", "Nollywood"],
         view_count: 2456,
         featured_image_url: blogFeatured2
@@ -200,6 +202,7 @@ const BlogPost = () => {
         `,
         author: "Emeka Okonkwo",
         published_at: "2024-01-10T14:30:00Z",
+        created_at: "2024-01-10T14:30:00Z",
         tags: ["YouTube", "Content Creation", "Digital Marketing", "Long-Form"],
         view_count: 1823,
         featured_image_url: blogFeatured3
@@ -274,6 +277,7 @@ const BlogPost = () => {
         `,
         author: "Kemi Afolabi",
         published_at: "2024-01-05T09:15:00Z",
+        created_at: "2024-01-05T09:15:00Z",
         tags: ["Short-Form", "TikTok", "Social Media", "Africa"],
         view_count: 3102,
         featured_image_url: blogFeatured1
@@ -355,7 +359,7 @@ const BlogPost = () => {
             </div>
             <div className="flex items-center space-x-2">
               <Calendar className="h-5 w-5" />
-              <span>{formatDate(post.published_at)}</span>
+              <span>{formatDate(post.published_at || post.created_at)}</span>
             </div>
             <div className="flex items-center space-x-2">
               <Eye className="h-5 w-5" />
