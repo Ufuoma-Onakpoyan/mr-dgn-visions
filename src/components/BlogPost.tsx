@@ -410,18 +410,18 @@ const BlogPost = () => {
           <Card className="border-0 bg-card/50 backdrop-blur-sm shadow-2xl overflow-hidden">
             <CardContent className="p-8 md:p-12">
               <div 
-                className="prose prose-xl max-w-none leading-relaxed
+                className="prose prose-xl max-w-none leading-relaxed font-blog
                   prose-headings:font-bold prose-headings:text-foreground prose-headings:mb-8 prose-headings:mt-12 prose-headings:tracking-tight
-                  prose-h2:text-3xl prose-h2:font-bold prose-h2:mb-10 prose-h2:mt-16 prose-h2:text-foreground prose-h2:font-serif prose-h2:border-b prose-h2:border-border/20 prose-h2:pb-4
-                  prose-h3:text-2xl prose-h3:font-semibold prose-h3:mb-8 prose-h3:mt-14 prose-h3:text-foreground prose-h3:font-serif
-                  prose-h4:text-xl prose-h4:font-semibold prose-h4:mb-6 prose-h4:mt-10 prose-h4:text-foreground prose-h4:font-serif
+                  prose-h2:text-3xl prose-h2:font-bold prose-h2:mb-10 prose-h2:mt-16 prose-h2:text-foreground prose-h2:font-blog prose-h2:border-b prose-h2:border-border/20 prose-h2:pb-4
+                  prose-h3:text-2xl prose-h3:font-semibold prose-h3:mb-8 prose-h3:mt-14 prose-h3:text-foreground prose-h3:font-blog
+                  prose-h4:text-xl prose-h4:font-semibold prose-h4:mb-6 prose-h4:mt-10 prose-h4:text-foreground prose-h4:font-blog
                   prose-p:text-foreground prose-p:leading-[1.8] prose-p:mb-10 prose-p:text-lg prose-p:font-blog prose-p:tracking-wide prose-p:text-justify
                   prose-strong:text-foreground prose-strong:font-semibold prose-strong:bg-primary/10 prose-strong:px-1 prose-strong:rounded
                   prose-em:text-muted-foreground prose-em:italic prose-em:font-medium
                   prose-blockquote:border-l-[6px] prose-blockquote:border-primary prose-blockquote:bg-gradient-to-r prose-blockquote:from-muted/50 prose-blockquote:to-muted/20
                   prose-blockquote:p-8 prose-blockquote:rounded-r-xl prose-blockquote:text-foreground prose-blockquote:shadow-lg
-                  prose-blockquote:italic prose-blockquote:text-xl prose-blockquote:my-12 prose-blockquote:font-serif prose-blockquote:leading-relaxed
-                  prose-li:text-foreground prose-li:leading-[1.7] prose-li:mb-4 prose-li:text-lg prose-li:font-serif prose-li:pl-2
+                  prose-blockquote:italic prose-blockquote:text-xl prose-blockquote:my-12 prose-blockquote:font-blog prose-blockquote:leading-relaxed
+                  prose-li:text-foreground prose-li:leading-[1.7] prose-li:mb-4 prose-li:text-lg prose-li:font-blog prose-li:pl-2
                   prose-ul:my-10 prose-ul:space-y-4 prose-ol:my-10 prose-ol:space-y-4
                   prose-ul:border-l-2 prose-ul:border-primary/20 prose-ul:pl-8 prose-ul:py-4
                   prose-a:text-primary prose-a:font-medium prose-a:underline prose-a:underline-offset-4 prose-a:decoration-2 
