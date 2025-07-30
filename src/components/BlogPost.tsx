@@ -409,23 +409,25 @@ const BlogPost = () => {
           <Card className="border-0 bg-card/50 backdrop-blur-sm shadow-2xl overflow-hidden">
             <CardContent className="p-8 md:p-12">
               <div 
-                className="prose prose-xl max-w-none
-                  prose-headings:font-bold prose-headings:text-foreground prose-headings:mb-6 prose-headings:mt-8
-                  prose-h2:text-3xl prose-h2:border-b prose-h2:border-border/30 prose-h2:pb-3
-                  prose-h3:text-2xl prose-h3:text-primary
-                  prose-h4:text-xl prose-h4:text-primary/80
-                  prose-p:text-foreground prose-p:leading-relaxed prose-p:mb-8 prose-p:text-lg prose-p:italic prose-p:font-medium prose-p:font-serif
-                  prose-strong:text-foreground prose-strong:font-bold prose-strong:bg-primary/10 prose-strong:px-1 prose-strong:rounded prose-strong:not-italic
-                  prose-em:text-foreground prose-em:italic prose-em:font-serif prose-em:text-lg prose-em:font-medium
-                  prose-blockquote:border-l-4 prose-blockquote:border-primary prose-blockquote:bg-muted/30 
-                  prose-blockquote:p-6 prose-blockquote:rounded-r-lg prose-blockquote:text-foreground 
-                  prose-blockquote:italic prose-blockquote:text-lg prose-blockquote:my-8 prose-blockquote:font-serif
-                  prose-li:text-foreground prose-li:leading-relaxed prose-li:mb-3 prose-li:text-lg prose-li:italic prose-li:font-medium prose-li:font-serif
-                  prose-ul:my-8 prose-ol:my-8
-                  prose-a:text-primary prose-a:font-medium prose-a:no-underline hover:prose-a:underline
-                  prose-code:bg-muted prose-code:px-2 prose-code:py-1 prose-code:rounded prose-code:text-sm
-                  prose-pre:bg-muted prose-pre:border prose-pre:border-border
-                  prose-img:rounded-lg prose-img:shadow-lg prose-img:my-8"
+                className="prose prose-xl max-w-none leading-relaxed
+                  prose-headings:font-bold prose-headings:text-foreground prose-headings:mb-8 prose-headings:mt-12 prose-headings:tracking-tight
+                  prose-h2:text-3xl prose-h2:font-bold prose-h2:mb-10 prose-h2:mt-16 prose-h2:text-foreground prose-h2:font-serif prose-h2:border-b prose-h2:border-border/20 prose-h2:pb-4
+                  prose-h3:text-2xl prose-h3:font-semibold prose-h3:mb-8 prose-h3:mt-14 prose-h3:text-foreground prose-h3:font-serif
+                  prose-h4:text-xl prose-h4:font-semibold prose-h4:mb-6 prose-h4:mt-10 prose-h4:text-foreground prose-h4:font-serif
+                  prose-p:text-foreground prose-p:leading-[1.8] prose-p:mb-10 prose-p:text-lg prose-p:font-serif prose-p:tracking-wide prose-p:text-justify
+                  prose-strong:text-foreground prose-strong:font-semibold prose-strong:bg-primary/10 prose-strong:px-1 prose-strong:rounded
+                  prose-em:text-muted-foreground prose-em:italic prose-em:font-medium
+                  prose-blockquote:border-l-[6px] prose-blockquote:border-primary prose-blockquote:bg-gradient-to-r prose-blockquote:from-muted/50 prose-blockquote:to-muted/20
+                  prose-blockquote:p-8 prose-blockquote:rounded-r-xl prose-blockquote:text-foreground prose-blockquote:shadow-lg
+                  prose-blockquote:italic prose-blockquote:text-xl prose-blockquote:my-12 prose-blockquote:font-serif prose-blockquote:leading-relaxed
+                  prose-li:text-foreground prose-li:leading-[1.7] prose-li:mb-4 prose-li:text-lg prose-li:font-serif prose-li:pl-2
+                  prose-ul:my-10 prose-ul:space-y-4 prose-ol:my-10 prose-ol:space-y-4
+                  prose-ul:border-l-2 prose-ul:border-primary/20 prose-ul:pl-8 prose-ul:py-4
+                  prose-a:text-primary prose-a:font-medium prose-a:underline prose-a:underline-offset-4 prose-a:decoration-2 
+                  hover:prose-a:text-primary/80 hover:prose-a:decoration-primary/60
+                  prose-code:bg-muted prose-code:px-3 prose-code:py-1 prose-code:rounded prose-code:text-sm prose-code:font-mono prose-code:border
+                  prose-pre:bg-muted prose-pre:border prose-pre:border-border prose-pre:rounded-lg prose-pre:p-6 prose-pre:my-10 prose-pre:shadow-inner
+                  prose-img:rounded-xl prose-img:shadow-2xl prose-img:my-12 prose-img:border prose-img:border-border/30"
                 dangerouslySetInnerHTML={{ __html: post.content }}
               />
             </CardContent>
